@@ -1,0 +1,17 @@
+- name: hostname | Update hostname
+  hostname: name={{hostname_hostname}}"
+
+- name: hostname | Update /etc/hostname
+  copy:
+    content: "{{hostname_hostname_short}}"
+    dest: /etc/hostname
+    owner: root
+    group: root
+    mode: 0644
+
+- name: hostname | Update /etc/hosts
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "^127.0.0.1"
+    line: "127.0.0.1{{'\t'}}{{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %}{{'\t'}}{{hostname_hostname_short}}{% endif %}"
+    state: present

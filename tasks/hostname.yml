@@ -1,5 +1,5 @@
 - name: hostname | Update hostname
-  hostname: name={{hostname_hostname}}"
+  hostname: name="{{hostname_hostname}}"
 
 - name: hostname | Update /etc/hostname
   copy:

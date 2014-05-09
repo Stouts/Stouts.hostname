@@ -13,5 +13,5 @@
   lineinfile:
     dest: /etc/hosts
     regexp: "^127.0.0.1"
-    line: "127.0.0.1{{'\t'}}localhost{{'\t'}}{{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %}{{'\t'}}{{hostname_hostname_short}}{% endif %}"
+    line: "127.0.0.1{{'\t'}}{{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %}{{'\t'}}{{hostname_hostname_short}}{% endif %}{{'\t'}}localhost"
     state: present

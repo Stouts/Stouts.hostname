@@ -2,12 +2,7 @@
   hostname: name="{{hostname_hostname}}"
 
 - name: hostname | Update /etc/hostname
-  copy:
-    content: "{{hostname_hostname_short}}"
-    dest: /etc/hostname
-    owner: root
-    group: root
-    mode: 0644
+  template: src=hostname.j2 dest=/etc/hostname owner=root group=root mode=0644
 
 - name: hostname | Update /etc/hosts
   lineinfile:

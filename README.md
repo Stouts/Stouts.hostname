@@ -7,6 +7,8 @@ Ansible role for manage the hostname
 
 #### Variables
 
+THe role variables and default values.
+
 ```yaml
 hostname_enabled: yes                       # Enable module
 hostname_hostname: "{{inventory_hostname}}" # Set hostname

@@ -8,4 +8,4 @@
   lineinfile:
     dest: /etc/hosts
     regexp: "^127.0.0.1"
-    line: "127.0.0.1 localhost {{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %} {{hostname_hostname_short}}{% endif %}"
+    line: "127.0.0.1 {{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %} {{hostname_hostname_short}}{% endif %} localhost"

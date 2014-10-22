@@ -1,7 +1,9 @@
 Stouts.hostname
 ===============
 
-[![Build Status](https://travis-ci.org/Stouts/Stouts.hostname.png)](https://travis-ci.org/Stouts/Stouts.hostname)
+[![Build Status](http://img.shields.io/travis/Stouts/Stouts.hostname.svg?style=flat-square)](https://travis-ci.org/Stouts/Stouts.hostname)
+[![Galaxy](http://img.shields.io/badge/galaxy-Stouts.hostname-blue.svg?style=flat-square)](https://galaxy.hostname.com/list#/roles/845)
+[![Tag](http://img.shields.io/github/tag/Stouts/Stouts.hostname.svg?style=flat-square)]()
 
 Ansible role for manage the hostname
 

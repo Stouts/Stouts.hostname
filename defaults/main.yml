@@ -3,3 +3,7 @@
 hostname_enabled: yes
 hostname_hostname: "{{inventory_hostname}}"
 hostname_hostname_short: "{{hostname_hostname.split('.')[:-1]|join('.')}}"
+hostname_hosts: {}        # Additional hosts to append in hosts file
+                          # Ex. hostname_hosts:
+                          #       myhost.com: 192.168.1.1
+                          #       yourhost.com: 192.168.1.2

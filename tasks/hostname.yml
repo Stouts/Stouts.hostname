@@ -12,4 +12,4 @@
 
 - name: Update /etc/hosts pt. 2
   lineinfile: line="{{item.value}} {{item.key}}" dest=/etc/hosts
-  with_dict: hostname_hosts
+  with_dict: "{{hostname_hosts}}"

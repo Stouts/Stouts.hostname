@@ -1,9 +1,6 @@
 - name: Update hostname
   hostname: name="{{hostname_hostname}}"
 
-- name: Update /etc/hostname
-  template: src=hostname.j2 dest=/etc/hostname owner=root group=root mode=0644
-
 - name: Update /etc/hosts pt. 1 
   lineinfile:
     dest: /etc/hosts

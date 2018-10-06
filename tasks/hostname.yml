@@ -5,7 +5,7 @@
   lineinfile:
     dest: /etc/hosts
     regexp: "^127.0.0.1"
-    line: "127.0.0.1 {{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %} {{hostname_hostname_short}}{% endif %} localhost"
+    line: "127.0.0.1 {{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %} {{hostname_hostname_short}}{% endif %}{% if 'localhost' != hostname_hostname_short %} localhost {% endif %}{% if 'localhost.localdomain' != hostname_hostname %} localhost.localdomain{% endif %}"
 
 - name: Update /etc/hosts pt. 2
   lineinfile: line="{{item.value}} {{item.key}}" dest=/etc/hosts

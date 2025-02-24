@@ -1,5 +1,5 @@
 ---
 
-- import_tasks: hostname.yml
+- include_tasks: hostname.yml
   when: hostname_enabled
   tags: [hostname]

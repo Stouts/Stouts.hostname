@@ -1,12 +1,37 @@
 - name: Update hostname
-  hostname: name="{{hostname_hostname}}"
+  ansible.builtin.hostname:
+    name: "{{hostname_hostname}}"
+    use: "{{ hostname_use | default(omit) }}"
 
-- name: Update /etc/hosts pt. 1 
-  lineinfile:
-    dest: /etc/hosts
-    regexp: "^127.0.0.1"
-    line: "127.0.0.1 {{hostname_hostname}}{% if hostname_hostname != hostname_hostname_short %} {{hostname_hostname_short}}{% endif %} localhost"
+- name: Write /etc/hostname
+  ansible.builtin.copy:
+    dest: /etc/hostname
+    content: "{{ hostname_hostname }}\n"
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Update /etc/hosts pt. 1
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    regexp: "^127\\.0\\.1\\.1\\s+"
+    line: "127.0.1.1 {{ hostname_hostname }}{% if hostname_hostname != hostname_hostname_short %} {{ hostname_hostname_short }}{% endif %}"
+    create: true
+    mode: "0644"
+
+- name: Ensure localhost line exists
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    regexp: "^127\\.0\\.0\\.1\\s+"
+    line: "127.0.0.1 localhost"
+    create: true
+    mode: "0644"
 
 - name: Update /etc/hosts pt. 2
-  lineinfile: line="{{item.value}} {{item.key}}" dest=/etc/hosts
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    regexp: "^{{ item.value | regex_escape }}\\s+{{ item.key | regex_escape }}$"
+    line: "{{ item.value }} {{ item.key }}"
+    create: true
+    mode: "0644"
   with_dict: "{{hostname_hosts}}"

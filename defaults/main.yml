@@ -1,6 +1,6 @@
 ---
 
-hostname_enabled: yes
+hostname_enabled: true
 hostname_hostname: "{{inventory_hostname}}"
 hostname_hostname_short: "{{hostname_hostname.split('.')[:-1]|join('.')}}"
 hostname_hosts: {}        # Additional hosts to append in hosts file
